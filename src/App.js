@@ -37,7 +37,9 @@ app.use('/', router);
 
 try {
     mongoose.Promise = global.Promise;
-    mongoose.connect(`mongodb://${process.env.MONGODB_USER || process.env.MONGODB_PASS ? `${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@` : ""}${process.env.MONGODB_SERVER}:${process.env.MONGODB_PORT}/${process.env.MONGODB_NAME}`)
+    const mongoDbUrl = `mongodb://${process.env.MONGODB_USER || process.env.MONGODB_PASS ? `${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@` : ""}${process.env.MONGODB_SERVER}:${process.env.MONGODB_PORT}/${process.env.MONGODB_NAME}`;
+    console.log(mongoDbUrl);
+    mongoose.connect(mongoDbUrl)
         .then(db => app.listen(process.env.PORT || 8080, () => console.log(`[SUCCESS] ${process.env.MONGODB_NAME} listening on port ${process.env.PORT} ...`)));
 } catch(e) {
     console.error(e.toString());
