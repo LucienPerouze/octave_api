@@ -19,7 +19,7 @@ export const fetchOneByToken = token => {
 };
 
 const generateToken = len => {
-    const tokenMaterial = "abcdefghijklmnopqrstuvwxyz0123456789";
+    const tokenMaterial = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let token = '';
     for (let i = 0; i < len; ++i)
         token += tokenMaterial.charAt(Math.floor(Math.random() * tokenMaterial.length));
