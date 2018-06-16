@@ -38,13 +38,16 @@ export const fetchLastUpdates = (session, limit = 0, offset = 0, order = 'creati
     });
 };
 
-export const create = (session, service, uri) => {
+export const create = (session, service, uri, name, artist, thumb) => {
     return new Promise((resolve, reject) => {
         const track = new Track({
             session,
             service,
             playlist: session.playlist,
-            uri
+            uri,
+            name,
+            artist,
+            thumb
         });
         track.save((e, track) => {
             if (e) reject(e.errors);

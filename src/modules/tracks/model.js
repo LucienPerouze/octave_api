@@ -2,6 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 import autopopulate from 'mongoose-autopopulate';
 
 const schema = Schema({
+    name: { type: String, default: null },
+    artist: { type: String, default: null },
+    thumb: { type: String, default: null },
     session: { type: Schema.Types.ObjectId, ref: 'Session', autopopulate: true },
     playlist: { type: Schema.Types.ObjectId, ref: 'Playlist', autopopulate: true },
     service: { type: String, default: null },
